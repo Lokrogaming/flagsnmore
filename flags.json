@@ -6,5 +6,14 @@
   "./canada.png": { "de": "Kanada", "en": "Canada" },
   "./italy.png": { "de": "Italien", "en": "Italy" },
   "./israel.png": { "de": "Israel", "en": "Israel" },
-  "./belgium.png": { "de": "Belgien", "en": "Belgium" }
+  "./belgium.png": { "de": "Belgien", "en": "Belgium" },
+  "./colombia.png": { "de": "Kolumbien", "en": "Colombia" },
+  "./england.png": { "de": "England", "en": "England" },
+  "./philippines.png": { "de": "Phillipinen", "en": "Philippines" },
+  "./netherlands.png": { "de": "Niederlande (Holland)", "en": "Netherlands" },
+  "./russia.png": { "de": "Russland", "en": "Russia" },
+  "./brazil.png": { "de": "Brasilien", "en": "Brazil" },
+  "./south-korea.png": { "de": "Süd-Korea", "en": "South-Korea" },
+  "./vietnam.png": { "de": "Vietnam", "en": "Vietnam" },
+  "./austria.png": { "de": "Österreich", "en": "Austria" }
 }
