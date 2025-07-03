@@ -1,3 +1,8 @@
+let score = 0;
+let highscore = localStorage.getItem('flagQuizHighscore') || 0;
+
+document.getElementById('highscore').textContent = highscore;
+
 async function loadFlags() {
   const res = await fetch('./flags.json');
   const data = await res.json();
@@ -19,12 +24,11 @@ async function startQuiz() {
   const entries = Object.entries(flags);
 
   const [flagPath, correctAnswer] = entries[Math.floor(Math.random() * entries.length)];
-
   const allCountries = entries.map(e => e[1]);
   const wrongAnswers = getRandomItems(allCountries, 2, correctAnswer);
   const options = shuffle([correctAnswer, ...wrongAnswers]);
 
-  document.getElementById('flag-img').src = flagPath.startsWith('./') ? flagPath : `.${flagPath}`;
+  document.getElementById('flag-img').src = flagPath;
   const optionsDiv = document.getElementById('options');
   optionsDiv.innerHTML = '';
 
@@ -32,9 +36,24 @@ async function startQuiz() {
     const button = document.createElement('button');
     button.textContent = option;
     button.onclick = () => {
-      document.getElementById('result').textContent =
-        option === correctAnswer ? '✅ Richtig!' : `❌ Falsch! Richtige Antwort: ${correctAnswer}`;
-      setTimeout(startQuiz, 2500);
+      const resultText = document.getElementById('result');
+      if (option === correctAnswer) {
+        score++;
+        resultText.textContent = '✅ Richtig!';
+      } else {
+        score = 0;
+        resultText.textContent = `❌ Falsch! Richtige Antwort: ${correctAnswer}`;
+      }
+
+      if (score > highscore) {
+        highscore = score;
+        localStorage.setItem('flagQuizHighscore', highscore);
+      }
+
+      document.getElementById('score').textContent = score;
+      document.getElementById('highscore').textContent = highscore;
+
+      setTimeout(startQuiz, 2000);
     };
     optionsDiv.appendChild(button);
   });
