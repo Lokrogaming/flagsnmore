@@ -130,7 +130,7 @@ function checkAnswer(given, correct) {
   document.getElementById('score').textContent = score;
   document.getElementById('highscore').textContent = highscore;
 
-  setTimeout(startQuiz, 2500);
+  setTimeout(startQuiz, 500);
 }
 
 startQuiz();
