@@ -1,7 +1,35 @@
 let score = 0;
 let highscore = localStorage.getItem('flagQuizHighscore') || 0;
-
 document.getElementById('highscore').textContent = highscore;
+
+let lang = 'de';
+let flagsData = {};
+
+const translations = {
+  de: {
+    correct: "✅ Richtig!",
+    wrong: "❌ Falsch! Richtige Antwort: {answer}",
+    scoreLabel: "Punkte",
+    highscoreLabel: "Highscore"
+  },
+  en: {
+    correct: "✅ Correct!",
+    wrong: "❌ Wrong! Correct answer: {answer}",
+    scoreLabel: "Score",
+    highscoreLabel: "Highscore"
+  }
+};
+
+document.getElementById('lang-select').addEventListener('change', (e) => {
+  lang = e.target.value;
+  updateLabels();
+  startQuiz();
+});
+
+function updateLabels() {
+  document.getElementById('score-label').textContent = translations[lang].scoreLabel;
+  document.getElementById('highscore-label').textContent = translations[lang].highscoreLabel;
+}
 
 async function loadFlags() {
   const res = await fetch('./flags.json');
@@ -20,12 +48,18 @@ function shuffle(array) {
 }
 
 async function startQuiz() {
-  const flags = await loadFlags();
-  const entries = Object.entries(flags);
+  updateLabels();
 
-  const [flagPath, correctAnswer] = entries[Math.floor(Math.random() * entries.length)];
-  const allCountries = entries.map(e => e[1]);
-  const wrongAnswers = getRandomItems(allCountries, 2, correctAnswer);
+  if (!Object.keys(flagsData).length) {
+    flagsData = await loadFlags();
+  }
+
+  const entries = Object.entries(flagsData);
+  const [flagPath, namesObj] = entries[Math.floor(Math.random() * entries.length)];
+  const correctAnswer = namesObj[lang];
+
+  const allNames = entries.map(e => e[1][lang]);
+  const wrongAnswers = getRandomItems(allNames, 2, correctAnswer);
   const options = shuffle([correctAnswer, ...wrongAnswers]);
 
   document.getElementById('flag-img').src = flagPath;
@@ -39,10 +73,10 @@ async function startQuiz() {
       const resultText = document.getElementById('result');
       if (option === correctAnswer) {
         score++;
-        resultText.textContent = '✅ Richtig!';
+        resultText.textContent = translations[lang].correct;
       } else {
         score = 0;
-        resultText.textContent = `❌ Falsch! Richtige Antwort: ${correctAnswer}`;
+        resultText.textContent = translations[lang].wrong.replace('{answer}', correctAnswer);
       }
 
       if (score > highscore) {

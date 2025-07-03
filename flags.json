@@ -1,12 +1,10 @@
 {
-    "./usa.png": "USA",
-    "./germany.png": "Deutschland",
-    "./uk.png": "Vereinigtes Königreich",
-    "./japan.png": "Japan",
-    "./canada.png": "Canada",
-    "./italien.png": "Italien",
-    "./israel.png": "Israel",
-    "./belgien.png": "Belgien"
-  }
-  
-  
+  "./usa.png": { "de": "USA", "en": "USA" },
+  "./germany.png": { "de": "Deutschland", "en": "Germany" },
+  "./uk.png": { "de": "Vereinigtes Königreich", "en": "United Kingdom" },
+  "./japan.png": { "de": "Japan", "en": "Japan" },
+  "./canada.png": { "de": "Kanada", "en": "Canada" },
+  "./italy.png": { "de": "Italien", "en": "Italy" },
+  "./israel.png": { "de": "Israel", "en": "Israel" },
+  "./belgium.png": { "de": "Belgien", "en": "Belgium" }
+}

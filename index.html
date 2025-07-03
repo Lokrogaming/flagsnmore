@@ -65,26 +65,43 @@
       font-size: 1.5rem;
       font-weight: bold;
     }
+
     #source {
       color: black;
       position: fixed;
       bottom: 5px;
       right: 5px;
     }
+
+    #lang-select {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      padding: 0.3rem;
+    }
   </style>
 </head>
 <body>
   <h1>🌍 Flaggen Quiz</h1>
+
+  <label for="lang-select">Sprache / Language:</label>
+  <select id="lang-select">
+    <option value="de" selected>Deutsch</option>
+    <option value="en">English</option>
+  </select>
+
   <div class="scoreboard">
-    Punkte: <span id="score">0</span> |
-    Highscore: <span id="highscore">0</span>
+    <span id="score-label">Punkte</span>: <span id="score">0</span> |
+    <span id="highscore-label">Highscore</span>: <span id="highscore">0</span>
   </div>
+
   <img id="flag-img" src="" alt="Flagge" />
   <div id="options"></div>
   <p id="result"></p>
+
   <div id="source">
-  <p>Icons: </p><a href="flaticon.com">Flaticon.com</a>
+    <p>Icons:</p><a href="https://www.flaticon.com" target="_blank">Flaticon.com</a>
   </div>
+
   <script type="module" src="./script.js"></script>
 </body>
 </html>
