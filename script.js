@@ -1,5 +1,5 @@
 async function loadFlags() {
-  const res = await fetch('https://lokrogaming.github.io/src/assets/games/flags/flags.json');
+  const res = await fetch('./src/assets/flags/flags.json');
   const data = await res.json();
   return data;
 }
