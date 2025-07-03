@@ -2,105 +2,76 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Flaggen Quiz</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, #f2f2f2, #d0e6ff);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
       text-align: center;
+      background: linear-gradient(to bottom right, #f2f2f2, #d0e6ff);
+      margin: 0;
+      padding: 2rem;
     }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      color: #003366;
-    }
-
-    .scoreboard {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-
-    #flag-img {
+    #flag-img, .flag-option {
       width: 300px;
-      height: auto;
-      margin-bottom: 1.5rem;
+      max-width: 80vw;
+      margin: 1rem auto;
       border: 4px solid #003366;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
-
-    #options {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      max-width: 300px;
-    }
-
-    #options button {
+    #options button, #submitBtn {
+      margin: 0.5rem;
       padding: 1rem;
-      font-size: 1.2rem;
-      background-color: #0066cc;
-      color: white;
+      font-size: 1rem;
       border: none;
       border-radius: 8px;
+      background-color: #0066cc;
+      color: white;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-
-    #options button:hover {
+    #options button:hover, #submitBtn:hover {
       background-color: #004a99;
     }
-
-    #result {
-      margin-top: 2rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    #source {
-      color: black;
-      position: fixed;
-      bottom: 5px;
-      right: 5px;
-    }
-
-    #lang-select {
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      padding: 0.3rem;
+    #result { margin-top: 1rem; font-weight: bold; font-size: 1.2rem; }
+    #modeSelect, #languageSelect, #blacklistInput {
+      margin: 1rem;
     }
   </style>
 </head>
 <body>
   <h1>🌍 Flaggen Quiz</h1>
+  <div>
+    Sprache:
+    <select id="languageSelect">
+      <option value="de">Deutsch</option>
+      <option value="en">English</option>
+    </select>
 
-  <label for="lang-select">Sprache / Language:</label>
-  <select id="lang-select">
-    <option value="de" selected>Deutsch</option>
-    <option value="en">English</option>
-  </select>
+    Modus:
+    <select id="modeSelect">
+      <option value="easy">Einfach</option>
+      <option value="medium">Mittel</option>
+      <option value="hard">Schwer</option>
+    </select>
+  </div>
+
+  <div>
+    Flaggen-Blacklist (durch Kommas getrennt, z. B. "russia.png,usa.png"):<br>
+    <input id="blacklistInput" style="width:80%;" placeholder="z. B. russia.png">
+  </div>
 
   <div class="scoreboard">
-    <span id="score-label">Punkte</span>: <span id="score">0</span> |
-    <span id="highscore-label">Highscore</span>: <span id="highscore">0</span>
+    Punkte: <span id="score">0</span> |
+    Highscore: <span id="highscore">0</span>
   </div>
 
-  <img id="flag-img" src="" alt="Flagge" />
+  <img id="flag-img" alt="Flagge" style="display: none;">
   <div id="options"></div>
-  <p id="result"></p>
 
-  <div id="source">
-    <p>Icons:</p><a href="https://www.flaticon.com" target="_blank">Flaticon.com</a>
-  </div>
+  <input id="textInput" type="text" style="display:none;">
+  <button id="submitBtn" style="display:none;">Antwort überprüfen</button>
+
+  <div id="result"></div>
 
   <script type="module" src="./script.js"></script>
 </body>
