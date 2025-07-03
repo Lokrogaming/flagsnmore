@@ -19,8 +19,13 @@
 
     h1 {
       font-size: 3rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       color: #003366;
+    }
+
+    .scoreboard {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     #flag-img {
@@ -64,6 +69,10 @@
 </head>
 <body>
   <h1>🌍 Flaggen Quiz</h1>
+  <div class="scoreboard">
+    Punkte: <span id="score">0</span> |
+    Highscore: <span id="highscore">0</span>
+  </div>
   <img id="flag-img" src="" alt="Flagge" />
   <div id="options"></div>
   <p id="result"></p>
