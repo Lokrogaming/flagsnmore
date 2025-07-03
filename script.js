@@ -2,7 +2,10 @@ let score = 0;
 let highscore = localStorage.getItem('flagQuizHighscore') || 0;
 let language = 'de';
 let mode = 'easy';
-let blacklist = [];
+let blacklist = [
+  "./russia.png",
+  "./israel.png",
+];
 
 document.getElementById('highscore').textContent = highscore;
 document.getElementById('languageSelect').addEventListener('change', (e) => {
@@ -11,10 +14,6 @@ document.getElementById('languageSelect').addEventListener('change', (e) => {
 });
 document.getElementById('modeSelect').addEventListener('change', (e) => {
   mode = e.target.value;
-  startQuiz();
-});
-document.getElementById('blacklistInput').addEventListener('input', (e) => {
-  blacklist = e.target.value.split(',').map(f => f.trim());
   startQuiz();
 });
 
