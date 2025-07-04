@@ -15,5 +15,7 @@
   "./brazil.png": { "de": "Brasilien", "en": "Brazil" },
   "./south-korea.png": { "de": "Süd-Korea", "en": "South-Korea" },
   "./vietnam.png": { "de": "Vietnam", "en": "Vietnam" },
-  "./austria.png": { "de": "Österreich", "en": "Austria" }
+  "./austria.png": { "de": "Österreich", "en": "Austria" },
+  "./ukraine.png": { "de": "Ukraine", "en": "Ukraine" },
+  "./switzerland.png": { "de": "Schweiz", "en": "Switzerland" }
 }
