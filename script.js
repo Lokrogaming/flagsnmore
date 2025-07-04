@@ -3,8 +3,12 @@ let highscore = localStorage.getItem('flagQuizHighscore') || 0;
 let language = 'de';
 let mode = 'easy';
 let blacklist = [
-  "./russia.png",
-  "./israel.png",
+  "./greece.png",
+  "./china.png",
+  "./turkey.png",
+  "./france.png",
+  "./finland.png",
+
 ];
 
 document.getElementById('highscore').textContent = highscore;
